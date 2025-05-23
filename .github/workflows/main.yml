@@ -48,11 +48,12 @@ jobs:
     - name: Initialize Gradle Project
       if: steps.validate-gradle.outputs.is_gradle_project == 'false'
       run: |
-        echo "Initializing new Gradle project..."
-        gradle --version  # 应显示 8.2 或更高版本
-        gradle init --type kotlin-application --dsl kotlin --no-daemon
-        ./gradlew wrapper --gradle-version 8.2
-        chmod +x gradlew
+         gradle --version  # 应显示 8.2 或更高版本
+       
+         echo "Initializing new Gradle project..."
+         gradle init --type kotlin-application --dsl kotlin --no-daemon
+         ./gradlew wrapper --gradle-version 8.2
+         chmod +x gradlew
     
     
     - name: Build with Gradle
