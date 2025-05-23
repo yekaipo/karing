@@ -5,9 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  defaults:
-      run:
-        working-directory: ./android  # 全局默认目录（可选
+  
   workflow_dispatch:
     inputs:
       build-type:
@@ -22,6 +20,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./android  # 全局默认目录（可选
     
     steps:
     - uses: actions/checkout@v4
