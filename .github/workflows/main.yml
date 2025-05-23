@@ -5,6 +5,9 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  defaults:
+      run:
+        working-directory: ./android  # 全局默认目录（可选
   workflow_dispatch:
     inputs:
       build-type:
@@ -32,7 +35,6 @@ jobs:
     
     # 第一步：检查是否是有效的Gradle项目
     - name: Validate Gradle Project
-      working-directory: ./android
       id: validate-gradle
       run: |
         if [ -f "settings.gradle.kts" ] || [ -f "build.gradle.kts" ] || [ -f "settings.gradle" ] || [ -f "build.gradle" ]; then
@@ -43,7 +45,6 @@ jobs:
     
     # 第二步：如果不是Gradle项目，先初始化
     - name: Initialize Gradle Project
-      working-directory: ./android
       if: steps.validate-gradle.outputs.is_gradle_project == 'false'
       run: |
         echo "Initializing new Gradle project..."
@@ -51,16 +52,6 @@ jobs:
         ./gradlew wrapper --gradle-version 8.2
         chmod +x gradlew
     
-    # 第三步：确保Wrapper存在（适用于已有项目）
-    - name: Setup Gradle Wrapper
-      working-directory: ./android
-      if: steps.validate-gradle.outputs.is_gradle_project == 'true'
-      run: |
-        if [ ! -f "gradlew" ]; then
-          ./gradlew wrapper --gradle-version 8.2
-        fi
-        chmod +x gradlew
     
     - name: Build with Gradle
-      working-directory: ./android
       run: ./gradlew build
