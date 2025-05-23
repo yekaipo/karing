@@ -21,6 +21,9 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: |
+         echo "查看版本"
+         gradle --version  # 应显示 8.2 或更高版本
+         chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
