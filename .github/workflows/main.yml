@@ -1,6 +1,5 @@
 name: Android CI
 
-# 触发条件：当推送到 main 分支或创建 PR 时
 on:
   push:
     branches: [ "main" ]
@@ -19,11 +18,15 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Grant execute permission for gradlew
+    - name: Install Gradle Wrapper
       working-directory: ./android
-      run: chmod +x gradlew
+      run: |
+        # 下载 Gradle 包装器
+        mkdir -p gradle/wrapper
+        wget -O gradle/wrapper/gradle-wrapper.jar https://repo1.maven.org/maven2/org/gradle/gradle-wrapper/7.5.1/gradle-wrapper-7.5.1.jar
+        wget -O gradle/wrapper/gradle-wrapper.properties https://raw.githubusercontent.com/gradle/gradle/v7.5.1/gradle/wrapper/gradle-wrapper.properties
+        chmod +x gradlew
 
     - name: Build with Gradle
       working-directory: ./android
