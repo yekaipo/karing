@@ -10,6 +10,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./android  # 全局默认目录（可选
+   
 
     steps:
     - uses: actions/checkout@v4
@@ -22,8 +26,10 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: |
-         echo "查看版本"
-         gradle --version  # 应显示 8.2 或更高版本
+         echo "构建gradew"
+         #gradle --version  # 应显示 8.2 或更高版本
+         gradle wrapper --gradle-version 8.14
+
          chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
