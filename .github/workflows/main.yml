@@ -38,6 +38,9 @@ jobs:
     - name: Validate Gradle Project
       id: validate-gradle
       run: |
+        gradle --version  # 应显示 8.2 或更高版本
+       
+      
         if [ -f "settings.gradle.kts" ] || [ -f "build.gradle.kts" ] || [ -f "settings.gradle" ] || [ -f "build.gradle" ]; then
           echo "is_gradle_project=true" >> $GITHUB_OUTPUT
         else
@@ -48,8 +51,6 @@ jobs:
     - name: Initialize Gradle Project
       if: steps.validate-gradle.outputs.is_gradle_project == 'false'
       run: |
-         gradle --version  # 应显示 8.2 或更高版本
-       
          echo "Initializing new Gradle project..."
          gradle init --type kotlin-application --dsl kotlin --no-daemon
          ./gradlew wrapper --gradle-version 8.2
