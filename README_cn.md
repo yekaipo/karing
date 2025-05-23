@@ -8,7 +8,7 @@
 <h3 align="center">
 一个基于 <a href="https://github.com/flutter/flutter">flutter</a> 的 <a href="https://github.com/SagerNet/sing-box">singbox</a> 图形用户界面。
 </h3>
-
+[![Manual Trigger](https://img.shields.io/badge/Trigger_Build-Manual-007EC7?style=for-the-badge)](https://github.com/{USER}/{REPO}/actions/workflows/android.yml?query=event%3Aworkflow_dispatch)
 [英语](./README.md) | 中文 | [俄语](./README_ru.md) | [波斯文](./README_fa.md)
 ### 注意: Karing未在任何视频平台开设过有关Karing的任何频道
 ## 特点
