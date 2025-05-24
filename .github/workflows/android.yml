@@ -33,6 +33,7 @@ jobs:
     - name: Grant execute permission for gradlew
       working-directory: ./android  # 在这里指定工作目录
       run: |
+         flutter pub get
          echo "构建gradew"
          echo "FLUTTER_HOME exists: $(ls -d $FLUTTER_HOME)"
          echo "ANDROID_HOME exists: $(ls -d $ANDROID_HOME)"
