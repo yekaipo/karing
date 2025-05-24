@@ -29,6 +29,8 @@ jobs:
          echo "构建gradew"
          
          # 在项目根目录执行（会自动重建文件）
+         pwd
+         ls
          echo "flutter.sdk=$FLUTTER_HOME" > android/local.properties
 
          #gradle --version  # 应显示 8.2 或更高版本
