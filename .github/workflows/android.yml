@@ -19,13 +19,7 @@ jobs:
       with:
         flutter-version: '3.19.0'  # 指定具体版本
         channel: 'stable'         # 指定渠道
-      
-
-    - name: Verify Flutter SDK Path
-      run: |
-           echo "FLUTTER_HOME=${{ steps.flutter-install.outputs.flutter-path }}" >> $GITHUB_ENV
-           ls "${{ steps.flutter-install.outputs.flutter-path }}/bin/flutter"  # 验证路径
-   
+     
     - uses: gradle/gradle-build-action@v2
     - uses: actions/checkout@v4
     - name: set up JDK 17
