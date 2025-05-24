@@ -20,9 +20,9 @@ jobs:
      # if: false  # 为假不执行
       uses: subosito/flutter-action@v2
       with:
-         flutter-version: "3.19.2"  # 使用与项目兼容的版本
-         cache: true
-         id: flutter-install
+        flutter-version: '3.19.0'  # 指定具体版本
+        channel: 'stable'         # 指定渠道
+      
 
     - name: Verify Flutter SDK Path
       run: |
