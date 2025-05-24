@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     
 
@@ -33,6 +32,7 @@ jobs:
         cache: gradle
     
     - name: Generate Gradle Wrapper
+      working-directory: ./android  # 在这里指定工作目录
       run: |
         gradle wrapper --gradle-version 8.7
         chmod +x gradlew
