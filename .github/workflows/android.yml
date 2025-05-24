@@ -16,6 +16,7 @@ jobs:
    
 
     steps:
+    
     - uses: actions/checkout@v4
     - name: set up JDK 11
       uses: actions/setup-java@v4
@@ -23,16 +24,17 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
+      env:
+        FLUTTER_HOME: ${{ github.workspace }}/flutter-sdk # 显式定义路径
+        ANDROID_HOME: ${{ github.workspace }}/android-sdk
+
     
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.13.0'  # 指定具体版本
         channel: 'stable'         # 指定渠道
-      env:
-        FLUTTER_HOME: ${{ github.workspace }}/flutter-sdk # 显式定义路径
-        ANDROID_HOME: ${{ github.workspace }}/android-sdk
-
+      
     - name: Grant execute permission for gradlew
       run: |
          echo "构建gradew"
