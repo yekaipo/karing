@@ -29,12 +29,16 @@ jobs:
       with:
         flutter-version: '3.13.0'  # 指定具体版本
         channel: 'stable'         # 指定渠道
-
+      env:
+        FLUTTER_HOME: ${{ github.workspace }}/flutter-sdk # 显式定义路径
+        ANDROID_HOME: ${{ github.workspace }}/android-sdk
 
     - name: Grant execute permission for gradlew
       run: |
          echo "构建gradew"
-         flutter pub get
+         echo "FLUTTER_HOME exists: $(ls -d $FLUTTER_HOME)"
+         echo "ANDROID_HOME exists: $(ls -d $ANDROID_HOME)"
+
          # 在项目根目录执行（会自动重建文件）
         
          ls
