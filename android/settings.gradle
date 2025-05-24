@@ -6,9 +6,9 @@ pluginManagement {
         assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
         return flutterSdkPath
     }()
+    assert flutterSdkPath != null, "FLUTTER_HOME 未设置，且 local.properties 中未找到 flutter.sdk"
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
-
-    repositories {
+ repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
