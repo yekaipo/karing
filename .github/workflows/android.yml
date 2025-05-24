@@ -17,9 +17,8 @@ jobs:
 
     steps:
     - uses: gradle/gradle-build-action@v2
-      with:
-       gradle-version: 8.10  # 显式指定版本，优先级高于 wrapper
-       arguments: build
+      
+       
     
     - uses: actions/checkout@v4
     - name: set up JDK 17
