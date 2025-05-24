@@ -28,12 +28,12 @@ jobs:
         distribution: 'temurin'
         cache: gradle
       env:
-        FLUTTER_HOME: ${{ github.workspace }}/flutter-sdk # 显式定义路径
-        ANDROID_HOME: ${{ github.workspace }}/android-sdk
+        FLUTTER_HOME: ${{ github.workspace }}/flutter # 显式定义路径
+        ANDROID_HOME: ${{ github.workspace }}/android
 
     
     - name: Install Flutter
-      if: false  # 为假不执行
+     # if: false  # 为假不执行
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.16.0'  # 指定具体版本
